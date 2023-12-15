@@ -3,9 +3,6 @@ import tkinter
 from PIL import ImageTk, Image
 import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification
-from torch.utils.data import DataLoader, TensorDataset
-import pandas as pd
-from sklearn.metrics import accuracy_score, f1_score, recall_score, matthews_corrcoef
 import random
 import numpy as np
 
@@ -69,8 +66,11 @@ def detectar_noticia():
     # Convierte el resultado a una etiqueta legible
     etiqueta_predicha = "falsa" if predicted_label.item() == 0 else "verdadera"
 
-    # Imprime la etiqueta predicha
-    print(f"[+]La noticia es: {etiqueta_predicha}")
+    # Actualiza la interfaz gráfica
+    if etiqueta_predicha == "falsa":
+        resultado_label.config(text="La noticia es FALSA", bg="red", fg="white")
+    else:
+        resultado_label.config(text="La noticia es VERDADERA", bg="green", fg="white")
 
 
 # -----------------------| Inicio de interfaz |-----------------------
@@ -113,10 +113,13 @@ label_fecha.place(relx=0.2, rely=0.6, relwidth=0.15, relheight=0.05)
 input_fecha = tkinter.Entry()
 input_fecha.place(relx=0.4, rely=0.6, relwidth=0.4, relheight=0.05)
 
+# Label para mostrar resultados
+resultado_label = tkinter.Label(ventana, text="", bg="white", font="Arial 12 bold", fg="black")
+resultado_label.place(relx=0.25, rely=0.8, relwidth=0.5, relheight=0.05)
+
 # Boton para ejecutar el programa
 boton_detectar = tkinter.Button(text="Detectar", bg="white", font="Arial 12 bold", fg="black", command=detectar_noticia)
 boton_detectar.place(relx=0.45, rely=0.7, relwidth=0.2, relheight=0.05)
-
 
 # --> Ejecutar ventana
 ventana.mainloop()
