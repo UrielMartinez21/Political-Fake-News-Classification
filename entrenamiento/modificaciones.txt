@@ -1,0 +1,4 @@
+[+] Modificaciones
+    - Usar dataset completo                             OK
+    - Barajear dataset si hay desvalance de clases      OK
+    - Usar regresion logistica
