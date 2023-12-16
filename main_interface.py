@@ -10,7 +10,7 @@ from transformers import RobertaTokenizer, RobertaForSequenceClassification
 # --> Bibliotecas para PDF
 from datetime import datetime
 from reportlab.lib.pagesizes import letter
-from reportlab.platypus import SimpleDocTemplate, Paragraph
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.styles import getSampleStyleSheet
 
 # -----------------------| Ejecutar al inicio |-----------------------
@@ -103,9 +103,9 @@ def generar_pdf(titulo, descripcion, fecha, etiqueta):
     fecha_actual = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
     pdf_filename = f"noticia_{fecha_actual}.pdf"
 
-
-    # Crear el documento PDF
-    doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
+    # Crear el documento PDF con márgenes
+    margenes = 40
+    doc = SimpleDocTemplate(pdf_filename, pagesize=letter, leftMargin=margenes, rightMargin=margenes, topMargin=margenes, bottomMargin=margenes)
     width, height = letter
 
     # Lista para almacenar los elementos del PDF
@@ -116,35 +116,28 @@ def generar_pdf(titulo, descripcion, fecha, etiqueta):
 
     # Encabezado
     encabezado_texto = "<b>Detector de noticias falsas</b>"
-    story.append(Paragraph(encabezado_texto, styles["Normal"]))
-
-    # Linea de separación
-    story.append(Paragraph("<br/><br/>"))
+    story.append(Paragraph(encabezado_texto, styles["Heading1"]))
+    story.append(Spacer(1, 12))  # Espacio después del encabezado
 
     # Título
     titulo_texto = "<b>Título:</b><br/>" + titulo
-    story.append(Paragraph(titulo_texto, styles["Normal"]))
-
-    # Linea de separación
-    story.append(Paragraph("<br/><br/>"))
+    story.append(Paragraph(titulo_texto, styles["Heading2"]))
+    story.append(Spacer(1, 12))  # Espacio después del título
 
     # Descripción
     descripcion_texto = "<b>Descripción:</b><br/>" + descripcion
-    story.append(Paragraph(descripcion_texto, styles["Normal"]))
-
-    # Linea de separación
-    story.append(Paragraph("<br/><br/>"))
+    story.append(Paragraph(descripcion_texto, styles["BodyText"]))
+    story.append(Spacer(1, 12))  # Espacio después de la descripción
 
     # Fecha
     fecha_texto = "<b>Fecha:</b><br/>" + fecha
-    story.append(Paragraph(fecha_texto, styles["Normal"]))
-
-    # Linea de separación
-    story.append(Paragraph("<br/><br/>"))
+    story.append(Paragraph(fecha_texto, styles["BodyText"]))
+    story.append(Spacer(1, 12))  # Espacio después de la fecha
 
     # Etiqueta
-    etiqueta_texto = "<b>La noticia es:</b>" + etiqueta
-    story.append(Paragraph(etiqueta_texto, styles["Normal"]))
+    etiqueta_texto = "<b>La noticia es:</b> " + etiqueta
+    story.append(Paragraph(etiqueta_texto, styles["BodyText"]))
+    story.append(Spacer(1, 12))  # Espacio después de la etiqueta
 
     # Construir el PDF
     doc.build(story)
