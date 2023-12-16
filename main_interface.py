@@ -173,44 +173,44 @@ ventana.config(bg="#2F3131")
 
 # Icono en pantalla
 imagen_logo = ImageTk.PhotoImage(Image.open("diseño/logo/logo.ico"))
-label_imagen = tkinter.Label(image=imagen_logo, bg="#2F3131")
-label_imagen.place(relx=0.20, rely=0.05, relwidth=0.60, relheight=0.3)
+label_imagen = tkinter.Label(ventana, image=imagen_logo, bg="#2F3131")
+label_imagen.place(relx=0.2, rely=0.05, relwidth=0.6, relheight=0.3)
 
 # Label de título
-label_titulo = tkinter.Label(text="Título: ", bg="#F9BA32", font="Arial 12 bold", fg="#2F3131") 
+label_titulo = tkinter.Label(ventana, text="Título: ", bg="#2F3131", font="Arial 12 bold", fg="#F9BA32", anchor="w") 
 label_titulo.place(relx=0.2, rely=0.4, relwidth=0.15, relheight=0.05)
 
 # Input para título
-input_titulo = tkinter.Entry(bg="#F9BA32", font="Arial 12")
+input_titulo = tkinter.Entry(ventana, bg="#F9BA32", font="Arial 12")
 input_titulo.place(relx=0.4, rely=0.4, relwidth=0.4, relheight=0.05)
 
 # Label para descripción
-label_descripcion = tkinter.Label(text="Descripción: ", bg="#F9BA32", font="Arial 12 bold", fg="#2F3131")
+label_descripcion = tkinter.Label(ventana, text="Descripción: ", bg="#2F3131", font="Arial 12 bold", fg="#F9BA32", anchor="w")
 label_descripcion.place(relx=0.2, rely=0.5, relwidth=0.15, relheight=0.05)
 
 # Input para descripción
-input_descripcion = tkinter.Entry(bg="#F9BA32", font="Arial 12")
+input_descripcion = tkinter.Entry(ventana, bg="#F9BA32", font="Arial 12")
 input_descripcion.place(relx=0.4, rely=0.5, relwidth=0.4, relheight=0.05)
 
 # Label para fecha
-label_fecha = tkinter.Label(text="Fecha: ", bg="#F9BA32", font="Arial 12 bold", fg="#2F3131")
+label_fecha = tkinter.Label(ventana, text="Fecha: ", bg="#2F3131", font="Arial 12 bold", fg="#F9BA32", anchor="w")
 label_fecha.place(relx=0.2, rely=0.6, relwidth=0.15, relheight=0.05)
 
 # Input para fecha
-input_fecha = tkinter.Entry(bg="#F9BA32", font="Arial 12")
+input_fecha = tkinter.Entry(ventana, bg="#F9BA32", font="Arial 12")
 input_fecha.place(relx=0.4, rely=0.6, relwidth=0.4, relheight=0.05)
 
 # Label para mostrar resultados
 resultado_label = tkinter.Label(ventana, text="", bg="#2F3131", font="Arial 12 bold", fg="#F8F1E5")
-resultado_label.place(relx=0.25, rely=0.8, relwidth=0.5, relheight=0.05)
+resultado_label.place(relx=0.25, rely=0.85, relwidth=0.5, relheight=0.05)
 
 # Botón para ejecutar el programa
-boton_detectar = tkinter.Button(text="Detectar", bg="#F9BA32", font="Arial 12 bold", fg="#2F3131", command=detectar_noticia)
-boton_detectar.place(relx=0.60, rely=0.7, relwidth=0.2, relheight=0.05)
+boton_detectar = tkinter.Button(ventana, text="Detectar", bg="#F9BA32", font="Arial 12 bold", fg="#2F3131", command=detectar_noticia)
+boton_detectar.place(relx=0.35, rely=0.7, relwidth=0.3, relheight=0.05)
 
 # Botón para limpiar los inputs
-boton_limpiar = tkinter.Button(text="Limpiar", bg="#426E86", font="Arial 12 bold", fg="#2F3131", command=limpiar_inputs)
-boton_limpiar.place(relx=0.30, rely=0.7, relwidth=0.2, relheight=0.05)
+boton_limpiar = tkinter.Button(ventana, text="Limpiar", bg="#426E86", font="Arial 12 bold", fg="#2F3131", command=limpiar_inputs)
+boton_limpiar.place(relx=0.35, rely=0.76, relwidth=0.3, relheight=0.05)
 
 # --> Ejecutar ventana
 ventana.mainloop()
